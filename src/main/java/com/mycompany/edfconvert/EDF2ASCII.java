@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 
 public class EDF2ASCII {
+    
     int time;
     String edfFile;
 
@@ -24,6 +25,11 @@ public class EDF2ASCII {
     }
 	
     public void edf2ascii() {
+        try {
+            Process process = Runtime.getRuntime().exec("edf2ascii " + edfFile);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
 	processData(this.edfFile);
     }
     
