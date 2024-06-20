@@ -30,7 +30,18 @@ public class EDF2ASCII {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-	processData(this.edfFile);
+	fileRename();
+    }
+    
+    public void fileRename() {
+        File file = new File(edfFile);
+        edfFile = file.getName();
+        String edfDataFile = "";
+        String suffix = "_data.txt";
+        edfDataFile = edfFile.substring(0, edfFile.lastIndexOf("."));
+        String edfFileName = edfDataFile + suffix;
+        System.out.println(file.getParent());
+        processData(file.getParent() + System.getProperty("file.separator") + edfFileName);
     }
     
     public void processData(String fname) {
